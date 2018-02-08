@@ -42,6 +42,9 @@ ConcurrentMap<wp<::android::hidl::base::V1_0::IBase>, bool> gServiceSidMap{};
 // Deprecated; kept for ABI compatibility. Use getBsConstructorMap.
 BsConstructorMap gBsConstructorMap{};
 
+// Deprecated; kept for ABI compatibility. Use getBsConstructorMap.
+BsConstructorMap gBsConstructorMap{};
+
 // For static executables, it is not guaranteed that gBnConstructorMap are initialized before
 // used in HAL definition libraries.
 BnConstructorMap& getBnConstructorMap() {
