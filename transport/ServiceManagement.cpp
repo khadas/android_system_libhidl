@@ -583,8 +583,9 @@ struct Waiter : IServiceNotification {
                 break;
             }
 
-            LOG(WARNING) << "Waited one second for " << mInterfaceName << "/" << mInstanceName
-                         << ". Waiting another...";
+            if (std::strcmp(mInstanceName.c_str(), "slot1") != 0)
+                LOG(WARNING) << "Waited one second for " << mInterfaceName << "/" << mInstanceName
+                             << ". Waiting another...";
         }
     }
 
@@ -735,7 +736,8 @@ sp<::android::hidl::base::V1_0::IBase> getRawServiceInternal(const std::string& 
         if (vintfLegacy || !retry) break;
 
         if (waiter != nullptr) {
-            ALOGI("getService: Trying again for %s/%s...", descriptor.c_str(), instance.c_str());
+            if (std::strcmp(instance.c_str(), "slot1") != 0)
+                ALOGI("getService: Trying again for %s/%s...", descriptor.c_str(), instance.c_str());
             waiter->wait();
         }
     }
